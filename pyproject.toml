@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "ceppy"
-version = "0.1.0"
+name = "pycep"
+version = "0.0.0"
 description = ""
 authors = ["Erick Duarte <erickod@gmail.com>"]
 readme = "README.md"
