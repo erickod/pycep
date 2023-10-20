@@ -1,6 +1,6 @@
-from typing import Any
+from typing import Any, Protocol
 
 
-class CEPServicesLoader:
+class CEPServicesLoader(Protocol):
     def load(self) -> Any:
         pass
