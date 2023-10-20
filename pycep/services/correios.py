@@ -30,7 +30,6 @@ class CorreiosService:
         complemento = element.find("complemento2").text
         if complemento:
             cep["address"] += f" {complemento}"
-
         return cep
 
     def __get_request_data(self, cep: str) -> bytes:
