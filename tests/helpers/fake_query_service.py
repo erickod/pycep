@@ -1,5 +1,12 @@
 from typing import Any
 
+from pycep.protocols.query_service import QueryService
 
-def make() -> Any:
-    return "FakeQueryService"
+
+class FakeQueryService:
+    async def query_cep(self, cep: str) -> Any:
+        return
+
+
+def make() -> QueryService:
+    return FakeQueryService()
