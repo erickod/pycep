@@ -24,7 +24,7 @@ class CepQueryServiceLoader:
             submodule = importlib.import_module(module_name)
             service = submodule.make()
             self.__is_compatible(service) and self._services.append(service)
-            return self._services
+        return self._services
 
     def __is_compatible(self, module: QueryService, raises: bool = True) -> bool:
         is_compatbile = isinstance(module, QueryService)
