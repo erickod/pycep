@@ -1,6 +1,8 @@
-from typing import Any, Protocol
+from typing import Protocol
+
+from pycep.protocols.query_service import QueryService
 
 
 class CEPServicesLoader(Protocol):
-    def load(self) -> Any:
+    def load(self) -> QueryService:
         pass
