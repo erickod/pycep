@@ -1,7 +1,7 @@
 import importlib
 from pkgutil import walk_packages
 from types import ModuleType
-from typing import Any
+from typing import Any, Callable
 
 from pycep import services
 
@@ -10,7 +10,7 @@ class CepQueryServiceLoader:
     """Import all sub modules dinamically"""
 
     def __init__(
-        self, module: ModuleType = services, walk_packages: callable = walk_packages
+        self, module: ModuleType = services, walk_packages: Callable = walk_packages
     ) -> None:
         self._services: list[Any] = []
         self._module = module
