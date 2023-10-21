@@ -2,6 +2,7 @@ import asyncio
 from typing import Any
 
 from pycep import services
+from pycep.cep_data import CepData
 from pycep.cep_service_loader import CepQueryServiceLoader
 from pycep.protocols.service_loader import CEPServicesLoader
 
@@ -13,7 +14,7 @@ class PyCEP:
         self.__services = cep_services_loader.load()
         self.__async_runner = async_runner
         self.__tasks: list[asyncio.Task] = []
-        self.__cep_data = None
+        self.__cep_data: CepData | None = None
         self.__status: str = "waiting_query"
         self.__services and asyncio.run(self.__query_services(cep))
 
@@ -43,6 +44,30 @@ class PyCEP:
     @property
     def status(self) -> str:
         return self.__status
+
+    @property
+    def number(self) -> str:
+        return self.__cep_data.cep
+
+    @property
+    def street(self) -> str:
+        return self.__cep_data.street
+
+    @property
+    def district(self) -> str:
+        return self.__cep_data.district
+
+    @property
+    def city(self) -> str:
+        return self.__cep_data.city
+
+    @property
+    def state(self) -> str:
+        return self.__cep_data.state
+
+    @property
+    def query_service(self) -> str:
+        return self.__cep_data.provider
 
 
 class CepFactory:

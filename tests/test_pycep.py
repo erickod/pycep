@@ -18,3 +18,20 @@ def test_load_method_from_cep_services_is_called_at_PyCEP_instantiation_time() -
     sut = Cep("72120020", cep_services_loader=cep_services_loader)
     assert cep_services_loader.load_is_called
     assert sut.status == "query_done"
+
+
+def test_cep_acess_attributes() -> None:
+    street = "Rua dos bobos"
+    district = "Centro"
+    city = "Cidade Lateral"
+    state = "GO"
+    cep = "72120020"
+    output_services = [FakeQueryService(street, district, city, state, cep)]
+    cep_services_loader = FakeCEPServicesLoader(output_services=output_services)
+    sut = Cep(cep, cep_services_loader=cep_services_loader)
+    assert sut.number == cep
+    assert sut.street == street
+    assert sut.district == district
+    assert sut.city == city
+    assert sut.state == state
+    assert sut.query_service == FakeQueryService.__name__
