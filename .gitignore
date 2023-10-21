@@ -1,4 +1,5 @@
 .vscode
 .coverage
+dist/*
 main.py
 **/__pycache__/*
