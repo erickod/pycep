@@ -53,9 +53,7 @@ class PyCEP:
     def __getitem__(self, key: str | int) -> str:
         if isinstance(key, int):
             return list(vars(self.__cep_data).items())[key]
-        if key == "query_service":
-            return vars(self.__cep_data)["provider"]
-        return vars(self.__cep_data)[key]
+        return self.__cep_data[key]
 
     @property
     def status(self) -> str:

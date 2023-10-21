@@ -1,5 +1,17 @@
 from dataclasses import dataclass
 
+keys_mapping = {
+    "street": "street",
+    "city": "city",
+    "state": "state",
+    "cep": "cep",
+    "provider": "provider",
+    "query_service": "provider",
+    "district": "district",
+    "number": "cep",
+    "uf": "state",
+}
+
 
 @dataclass
 class CepData:
@@ -9,3 +21,6 @@ class CepData:
     state: str
     cep: str
     provider: str
+
+    def __getitem__(self, key: str | int) -> str:
+        return getattr(self, keys_mapping[key])
