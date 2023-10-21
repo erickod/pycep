@@ -1,3 +1,4 @@
+from pycep.cep_data import CepData
 from pycep.services.correios import CorreiosService
 from tests.helpers.fake_http_client import FakeHttpClient
 
@@ -9,10 +10,9 @@ async def test_querycep_returns_expected_value() -> None:
     sut = CorreiosService(http_client=http_client)
     output = await sut.query_cep("72120020")
     assert http_client.post_is_called
-    assert output == {
-        "district": "Taguatinga Norte (Taguatinga)",
-        "city": "Brasília",
-        "address": "QND 2",
-        "state": "DF",
-        "provider": "CorreiosService",
-    }
+    assert isinstance(output, CepData)
+    assert output.district == "Taguatinga Norte (Taguatinga)"
+    assert output.city == "Brasília"
+    assert output.street == "QND 2"
+    assert output.state == "DF"
+    assert output.provider == CorreiosService.__name__

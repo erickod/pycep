@@ -3,6 +3,7 @@ from typing import Any
 
 import httpx
 
+from pycep.cep_data import CepData
 from pycep.protocols.query_service import QueryService
 
 
@@ -11,26 +12,28 @@ class CorreiosService:
         self.__endpoint = "https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente"
         self.__http_client = http_client
 
-    async def query_cep(self, cep: str) -> Any:
+    async def query_cep(self, cep: str) -> CepData:
+        self.__cep_number = cep
         response = self.__http_client.post(
             self.__endpoint, data=self.__get_request_data(cep)
         ).text
         et = ET.fromstring(response)
         return self.__fit_to_cep_model(et)
 
-    @classmethod
-    def __fit_to_cep_model(cls, response) -> Any:
-        cep = {}
+    def __fit_to_cep_model(self, response) -> CepData:
         element = response[0][0][0]
-        cep["district"] = element.find("bairro").text or ""
-        cep["city"] = element.find("cidade").text or ""
-        cep["address"] = element.find("end").text or ""
-        cep["state"] = element.find("uf").text or ""
-        cep["provider"] = cls.__name__
+        cep_data = CepData(
+            cep=self.__cep_number,
+            street=element.find("end").text or "",
+            district=element.find("bairro").text or "",
+            city=element.find("cidade").text or "",
+            state=element.find("uf").text or "",
+            provider=self.__class__.__name__,
+        )
         complemento = element.find("complemento2").text
         if complemento:
-            cep["address"] += f" {complemento}"
-        return cep
+            cep_data.street += f" {complemento}"
+        return cep_data
 
     def __get_request_data(self, cep: str) -> bytes:
         return (
