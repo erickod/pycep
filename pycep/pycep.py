@@ -8,6 +8,15 @@ from pycep.protocols.service_loader import CEPServicesLoader
 
 
 class PyCEP:
+    __slots__ = (
+        "__services",
+        "__async_runner",
+        "__tasks",
+        "__cep_data",
+        "__status",
+        "__services",
+    )
+
     def __init__(
         self, cep: str, *, cep_services_loader: CEPServicesLoader, async_runner=asyncio
     ) -> None:
@@ -40,6 +49,13 @@ class PyCEP:
         if self.__cep_data:
             return
         self.__cep_data = task.result()
+
+    def __getitem__(self, key: str | int) -> str:
+        if isinstance(key, int):
+            return list(vars(self.__cep_data).items())[key]
+        if key == "query_service":
+            return vars(self.__cep_data)["provider"]
+        return vars(self.__cep_data)[key]
 
     @property
     def status(self) -> str:
