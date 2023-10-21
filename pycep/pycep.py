@@ -69,13 +69,16 @@ class PyCEP:
     def query_service(self) -> str:
         return self.__cep_data.provider
 
+    def __repr__(self) -> str:
+        return f"PyCEP(cep={self.__cep_data and self.__cep_data.cep or ''})"
+
 
 class CepFactory:
     def __call__(
         self,
         cep: str,
         *,
-        cep_services_loader: CEPServicesLoader = CepQueryServiceLoader(module=services)
+        cep_services_loader: CEPServicesLoader = CepQueryServiceLoader(module=services),
     ) -> PyCEP:
         return PyCEP(cep=cep, cep_services_loader=cep_services_loader)
 
