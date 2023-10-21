@@ -7,3 +7,4 @@ class FakeCEPServicesLoader:
 
     def load(self) -> Any:
         self.load_is_called = True
+        return []

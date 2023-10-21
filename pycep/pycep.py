@@ -15,6 +15,7 @@ class PyCEP:
         self.__async_runner = async_runner
         self.__tasks: list[asyncio.Task] = []
         self.__cep_data = None
+        self.__status: str = "waiting_query"
         asyncio.run(self.__query_services(cep))
 
     async def __create_tasks(self, cep: str) -> Any:
@@ -24,8 +25,10 @@ class PyCEP:
 
     async def __query_services(self, cep: str) -> Any:
         await self.__create_tasks(cep)
-        await asyncio.wait(self.__tasks, return_when=asyncio.FIRST_COMPLETED)
-        await self.__cancel_pending_tasks()
+        self.__tasks and await asyncio.wait(
+            self.__tasks, return_when=asyncio.FIRST_COMPLETED
+        )
+        self.__tasks and await self.__cancel_pending_tasks()
 
     async def __cancel_pending_tasks(self) -> None:
         for task in self.__tasks:
@@ -39,6 +42,10 @@ class PyCEP:
 
     def __int__(self) -> int:
         return int(self.__cep_number)
+
+    @property
+    def status(self) -> str:
+        return self.__status
 
 
 class CepFactory:
