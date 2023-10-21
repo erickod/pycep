@@ -10,7 +10,6 @@ class PyCEP:
     def __init__(
         self, cep: str, *, cep_services_loader: CEPServicesLoader, async_runner=asyncio
     ) -> None:
-        self.__cep_number: str = cep
         self.__services = cep_services_loader.load()
         self.__async_runner = async_runner
         self.__tasks: list[asyncio.Task] = []
@@ -39,9 +38,6 @@ class PyCEP:
         if self.__cep_data:
             return
         self.__cep_data = task.result()
-
-    def __int__(self) -> int:
-        return int(self.__cep_number)
 
     @property
     def status(self) -> str:
