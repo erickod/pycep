@@ -15,7 +15,7 @@ class PyCEP:
         self.__tasks: list[asyncio.Task] = []
         self.__cep_data = None
         self.__status: str = "waiting_query"
-        asyncio.run(self.__query_services(cep))
+        self.__services and asyncio.run(self.__query_services(cep))
 
     async def __create_tasks(self, cep: str) -> Any:
         for service in self.__services:
@@ -28,6 +28,7 @@ class PyCEP:
             self.__tasks, return_when=asyncio.FIRST_COMPLETED
         )
         self.__tasks and await self.__cancel_pending_tasks()
+        self.__status = "query_done"
 
     async def __cancel_pending_tasks(self) -> None:
         for task in self.__tasks:
