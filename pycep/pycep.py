@@ -8,15 +8,6 @@ from pycep.protocols.service_loader import CEPServicesLoader
 
 
 class PyCEP:
-    __slots__ = (
-        "__services",
-        "__async_runner",
-        "__tasks",
-        "__cep_data",
-        "__status",
-        "__services",
-    )
-
     def __init__(
         self, cep: str, *, cep_services_loader: CEPServicesLoader, async_runner=asyncio
     ) -> None:
@@ -92,9 +83,12 @@ class CepFactory:
         self,
         cep: str,
         *,
-        cep_services_loader: CEPServicesLoader = CepQueryServiceLoader(module=services),
+        cep_services_loader: CEPServicesLoader | None = None,
     ) -> PyCEP:
-        return PyCEP(cep=cep, cep_services_loader=cep_services_loader)
+        return PyCEP(
+            cep=cep,
+            cep_services_loader=CepQueryServiceLoader(module=services),
+        )
 
 
 Cep = CepFactory()
