@@ -1,22 +1,22 @@
 import xml.etree.ElementTree as ET
 
-import httpx
-
+from pycep.adapters.aiohttp_client import AioHttpHttpClient, HttpResponse
 from pycep.cep_data import CepData
+from pycep.protocols.http_client import HttpClient
 from pycep.protocols.query_service import QueryService
 
 
 class CorreiosService:
-    def __init__(self, http_client=httpx) -> None:
+    def __init__(self, http_client: HttpClient = AioHttpHttpClient()) -> None:
         self.__endpoint = "https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente"
         self.__http_client = http_client
 
     async def query_cep(self, cep: str) -> CepData:
         self.__cep_number = cep
-        response = self.__http_client.post(
+        response: HttpResponse = await self.__http_client.post(
             self.__endpoint, data=self.__get_request_data(cep)
-        ).text
-        et = ET.fromstring(response)
+        )
+        et = ET.fromstring(response.text())
         return self.__fit_to_cep_model(et)
 
     def __fit_to_cep_model(self, response) -> CepData:
