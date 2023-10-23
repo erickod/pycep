@@ -16,7 +16,7 @@ class PyCEP:
         self.__tasks: list[asyncio.Task] = []
         self.__cep_data: CepData | None = None
         self.__status: str = "waiting_query"
-        asyncio.run(self.__query_services(cep))
+        self.__services and asyncio.run(self.__query_services(cep))
 
     def __create_tasks(self, cep: str) -> Any:
         for service in self.__services:
