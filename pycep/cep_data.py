@@ -26,4 +26,4 @@ class CepData:
         return getattr(self, keys_mapping[key])
 
     def __bool__(self) -> bool:
-        return all(vars(self).values())
+        return any(vars(self).values())

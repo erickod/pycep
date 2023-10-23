@@ -14,7 +14,7 @@ class PyCEP:
         self.__services = cep_services_loader.load()
         self.__async_runner = async_runner
         self.__tasks: list[asyncio.Task] = []
-        self.__cep_data: CepData | None = None
+        self.__cep_data: CepData = CepData()
         self.__status: str = "waiting_query"
         self.__services and asyncio.run(self.__query_services(cep))
 
@@ -76,7 +76,7 @@ class PyCEP:
         return self.__cep_data.provider
 
     def __repr__(self) -> str:
-        return f"PyCEP(cep={self.__cep_data and self.__cep_data.cep or ''})"
+        return f"PyCEP(cep={self.__cep_data.cep})"
 
 
 class CepFactory:
