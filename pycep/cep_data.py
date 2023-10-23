@@ -15,12 +15,15 @@ keys_mapping = {
 
 @dataclass
 class CepData:
-    street: str
-    district: str
-    city: str
-    state: str
-    cep: str
-    provider: str
+    street: str = ""
+    district: str = ""
+    city: str = ""
+    state: str = ""
+    cep: str = ""
+    provider: str = ""
 
     def __getitem__(self, key: str | int) -> str:
         return getattr(self, keys_mapping[key])
+
+    def __bool__(self) -> bool:
+        return all(vars(self).values())
