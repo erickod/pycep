@@ -1,4 +1,5 @@
 import asyncio
+import re
 from typing import Any
 
 from pycep import services
@@ -24,6 +25,7 @@ class PyCEP:
             self.__tasks.append(task)
 
     async def __query_services(self, cep: str) -> Any:
+        cep = re.sub(r"\D", "", cep)
         self.__status = "querying"
         self.__create_tasks(cep)
         self.__tasks and await asyncio.wait(

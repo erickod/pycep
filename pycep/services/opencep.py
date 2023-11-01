@@ -10,7 +10,6 @@ class OpenCepService:
         self.__http_client = http_client
 
     async def query_cep(self, cep: str) -> CepData:
-        cep = cep.replace("-", "").replace(".", "")
         response = await self.__http_client.get(self.__base_url.format(cep=cep))
         response_asdict = response.json()
         return CepData(
@@ -24,4 +23,5 @@ class OpenCepService:
 
 
 def make() -> QueryService:
+    return OpenCepService()
     return OpenCepService()
