@@ -1,4 +1,5 @@
 from pycep.cep_data import CepData
+from pycep.protocols.query_service import QueryService
 from pycep.services.correios import CorreiosService, make
 from tests.helpers.fake_http_client import FakeHttpClient
 
@@ -8,6 +9,11 @@ post_output = '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelo
 async def test_make_returns_right_instance() -> None:
     sut = make()
     assert isinstance(sut, CorreiosService)
+
+
+async def test_instance_implements_query_service() -> None:
+    sut = make()
+    assert isinstance(sut, QueryService)
 
 
 async def test_querycep_returns_expected_value() -> None:

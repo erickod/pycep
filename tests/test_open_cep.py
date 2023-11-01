@@ -1,4 +1,5 @@
 from pycep.cep_data import CepData
+from pycep.protocols.query_service import QueryService
 from pycep.services.opencep import OpenCepService, make
 from tests.helpers.fake_http_client import FakeHttpClient
 
@@ -11,6 +12,11 @@ expected_get_output = {
     "uf": "DF",
     "ibge": "5300108",
 }
+
+
+async def test_instance_implements_query_service() -> None:
+    sut = make()
+    assert isinstance(sut, QueryService)
 
 
 async def test_make_returns_right_instance() -> None:
