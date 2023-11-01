@@ -52,3 +52,15 @@ def test_cep_acess_attributes_with_index_syntax() -> None:
     assert sut["city"] == city
     assert sut["state"] == state
     assert sut["query_service"] == FakeQueryService.__name__
+
+
+def test_repr_implementation() -> None:
+    street = "Rua dos bobos"
+    district = "Centro"
+    city = "Cidade Lateral"
+    state = "GO"
+    cep = "72120020"
+    output_services = [FakeQueryService(street, district, city, state, cep)]
+    cep_services_loader = FakeCEPServicesLoader(output_services=output_services)
+    sut = Cep(cep, cep_services_loader=cep_services_loader)
+    assert str(sut) == "PyCEP(cep=72120020)"
