@@ -2,7 +2,7 @@ from pycep.cep_data import CepData
 from pycep.services.correios import CorreiosService, make
 from tests.helpers.fake_http_client import FakeHttpClient
 
-post_output = '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/"><return><bairro>Taguatinga Norte (Taguatinga)</bairro><cep>72120020</cep><cidade>Brasília</cidade><complemento2></complemento2><end>QND 2</end><uf>DF</uf></return></ns2:consultaCEPResponse></soap:Body></soap:Envelope>'.encode()
+post_output = '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/"><return><bairro>Taguatinga Norte (Taguatinga)</bairro><cep>72120020</cep><cidade>Brasília</cidade><complemento2>SC</complemento2><end>QND 2</end><uf>DF</uf></return></ns2:consultaCEPResponse></soap:Body></soap:Envelope>'.encode()
 
 
 async def test_make_returns_right_instance() -> None:
@@ -18,6 +18,6 @@ async def test_querycep_returns_expected_value() -> None:
     assert isinstance(output, CepData)
     assert output.district == "Taguatinga Norte (Taguatinga)"
     assert output.city == "Brasília"
-    assert output.street == "QND 2"
+    assert output.street == "QND 2 SC"
     assert output.state == "DF"
     assert output.provider == CorreiosService.__name__
