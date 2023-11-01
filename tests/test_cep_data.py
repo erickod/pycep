@@ -23,3 +23,8 @@ def test_cep_data_instantiation_params() -> None:
     assert sut.district == district
     assert sut.cep == cep
     assert sut.provider == provider
+
+
+def test_bool_evaluation_when_any_value_is_fullfilled() -> None:
+    sut = CepData(cep=cep)
+    assert bool(sut)
