@@ -1,5 +1,3 @@
-import httpx
-
 from pycep.adapters.aiohttp_client import AioHttpHttpClient
 from pycep.cep_data import CepData
 from pycep.protocols.http_client import HttpClient
