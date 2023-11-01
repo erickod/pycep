@@ -26,3 +26,15 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+
+[tool.coverage.report]
+exclude_also = [
+    "class HttpClient(Protocol):"
+    ]
+
+[tool.coverage.run]
+omit = [
+    "*/protocols/*",
+    "*/__init__.py",
+    "*/tests/*",
+    ]
