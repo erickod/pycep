@@ -1,5 +1,5 @@
 from pycep.cep_data import CepData
-from pycep.services.opencep import OpenCepService
+from pycep.services.opencep import OpenCepService, make
 from tests.helpers.fake_http_client import FakeHttpClient
 
 expected_get_output = {
@@ -11,6 +11,11 @@ expected_get_output = {
     "uf": "DF",
     "ibge": "5300108",
 }
+
+
+async def test_make_returns_right_instance() -> None:
+    sut = make()
+    assert isinstance(sut, OpenCepService)
 
 
 async def test_querycep_returns_expected_value() -> None:
