@@ -64,3 +64,37 @@ def test_repr_implementation() -> None:
     cep_services_loader = FakeCEPServicesLoader(output_services=output_services)
     sut = Cep(cep, cep_services_loader=cep_services_loader)
     assert str(sut) == "PyCEP(cep=72120020)"
+
+
+def test_access_items_using_numeric_indexes() -> None:
+    street = "Rua dos bobos"
+    district = "Centro"
+    city = "Cidade Lateral"
+    state = "GO"
+    cep = "72120020"
+    output_services = [FakeQueryService(street, district, city, state, cep)]
+    cep_services_loader = FakeCEPServicesLoader(output_services=output_services)
+    sut = Cep(cep, cep_services_loader=cep_services_loader)
+    assert sut[0] == ("street", "Rua dos bobos")
+    assert sut[1] == ("district", "Centro")
+    assert sut[2] == ("city", "Cidade Lateral")
+    assert sut[3] == ("state", "GO")
+    assert sut[4] == ("cep", "72120020")
+    assert sut[5] == ("provider", "FakeQueryService")
+
+
+def test_access_items_using_keys() -> None:
+    street = "Rua dos bobos"
+    district = "Centro"
+    city = "Cidade Lateral"
+    state = "GO"
+    cep = "72120020"
+    output_services = [FakeQueryService(street, district, city, state, cep)]
+    cep_services_loader = FakeCEPServicesLoader(output_services=output_services)
+    sut = Cep(cep, cep_services_loader=cep_services_loader)
+    assert sut["street"] == "Rua dos bobos"
+    assert sut["district"] == "Centro"
+    assert sut["city"] == "Cidade Lateral"
+    assert sut["state"] == "GO"
+    assert sut["cep"] == "72120020"
+    assert sut["provider"] == "FakeQueryService"

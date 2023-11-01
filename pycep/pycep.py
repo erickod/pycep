@@ -38,8 +38,6 @@ class PyCEP:
             not task.done() and task.cancel()
 
     def __configure_cep_data(self, task: asyncio.Task) -> None:
-        if self.__cep_data:
-            return
         self.__cep_data = task.result()
 
     def __getitem__(self, key: str | int) -> str:
