@@ -3,6 +3,11 @@ Consulta CEPs em vários serviços (Correios, ViaCep, OpenCep) de maneira totalm
 
 ## Comece por aqui
 Nesta seção você encontrará instruções de como instalar o pacote e também encontrará exemplos de uso
+
+### Requerimentos
+
+Esse projeto é compatível com as versões `3.10` e `3.11` do python no momento. A compatibilização com versões anteriores está prevista, e qualquer contribuição é bem vinda.
+
 ### Instalação
 
 ##### PIP
