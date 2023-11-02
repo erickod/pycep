@@ -36,13 +36,13 @@ class PyCEP:
 
     def __cancel_pending_tasks(self) -> None:
         for task in self.__tasks:
-            task.done() and self.__configure_cep_data(task)
+            task.done() and self.__configure_cep_data(task)  # type: ignore
             not task.done() and task.cancel()
 
     def __configure_cep_data(self, task: asyncio.Task) -> None:
         self.__cep_data = task.result()
 
-    def __getitem__(self, key: str | int) -> str:
+    def __getitem__(self, key: str | int) -> str | tuple[str, str]:
         if isinstance(key, int):
             return list(vars(self.__cep_data).items())[key]
         return self.__cep_data[key]
