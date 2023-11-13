@@ -1,4 +1,4 @@
-from pycep.cep_data import CepData
+from ceppy.cep_data import CepData
 
 street = "Estrada do Portela - até 279 - lado ímpar"
 state = "RJ"

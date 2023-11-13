@@ -1,6 +1,6 @@
-from pycep.cep_data import CepData
-from pycep.protocols.query_service import QueryService
-from pycep.services.correios import CorreiosService, make
+from ceppy.cep_data import CepData
+from ceppy.protocols.query_service import QueryService
+from ceppy.services.correios import CorreiosService, make
 from tests.helpers.fake_http_client import FakeHttpClient
 
 post_output = '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/"><return><bairro>Taguatinga Norte (Taguatinga)</bairro><cep>72120020</cep><cidade>Brasília</cidade><complemento2>SC</complemento2><end>QND 2</end><uf>DF</uf></return></ns2:consultaCEPResponse></soap:Body></soap:Envelope>'.encode()

@@ -1,4 +1,4 @@
-# PyCEP
+# Ceppy
 Consulta CEPs em vários serviços (Correios, ViaCep, OpenCep) de maneira totalmente assíncrona
 
 ## Comece por aqui

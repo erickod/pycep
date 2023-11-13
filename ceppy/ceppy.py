@@ -2,13 +2,13 @@ import asyncio
 import re
 from typing import Any
 
-from pycep import services
-from pycep.cep_data import CepData
-from pycep.cep_service_loader import CepQueryServiceLoader
-from pycep.protocols.service_loader import CEPServicesLoader
+from ceppy import services
+from ceppy.cep_data import CepData
+from ceppy.cep_service_loader import CepQueryServiceLoader
+from ceppy.protocols.service_loader import CEPServicesLoader
 
 
-class PyCEP:
+class Ceppy:
     def __init__(
         self, cep: str, *, cep_services_loader: CEPServicesLoader, async_runner=asyncio
     ) -> None:
@@ -76,7 +76,7 @@ class PyCEP:
         return self.__cep_data.provider
 
     def __repr__(self) -> str:
-        return f"PyCEP(cep={self.__cep_data.cep})"
+        return f"Ceppy(cep={self.__cep_data.cep})"
 
 
 class CepFactory:
@@ -85,8 +85,8 @@ class CepFactory:
         cep: str,
         *,
         cep_services_loader: CEPServicesLoader | None = None,
-    ) -> PyCEP:
-        return PyCEP(
+    ) -> Ceppy:
+        return Ceppy(
             cep=cep,
             cep_services_loader=cep_services_loader
             or CepQueryServiceLoader(module=services),

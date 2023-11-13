@@ -3,8 +3,8 @@ from pkgutil import walk_packages
 from types import ModuleType
 from typing import Any, Callable
 
-from pycep import services
-from pycep.protocols.query_service import QueryService
+from ceppy import services
+from ceppy.protocols.query_service import QueryService
 
 
 class CepQueryServiceLoader:

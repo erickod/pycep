@@ -1,7 +1,7 @@
-from pycep.adapters.aiohttp_client import AioHttpHttpClient
-from pycep.cep_data import CepData
-from pycep.protocols.http_client import HttpClient
-from pycep.protocols.query_service import QueryService
+from ceppy.adapters.aiohttp_client import AioHttpHttpClient
+from ceppy.cep_data import CepData
+from ceppy.protocols.http_client import HttpClient
+from ceppy.protocols.query_service import QueryService
 
 
 class ViaCepService:

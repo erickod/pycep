@@ -1,6 +1,6 @@
-from pycep.cep_data import CepData
-from pycep.protocols.query_service import QueryService
-from pycep.services.viacep import ViaCepService, make
+from ceppy.cep_data import CepData
+from ceppy.protocols.query_service import QueryService
+from ceppy.services.viacep import ViaCepService, make
 from tests.helpers.fake_http_client import FakeHttpClient
 
 expected_get_output = {

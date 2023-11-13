@@ -1,6 +1,6 @@
 from typing import Any
 
-from pycep.adapters.aiohttp_client import HttpResponse
+from ceppy.adapters.aiohttp_client import HttpResponse
 
 
 class FakeHttpClient:

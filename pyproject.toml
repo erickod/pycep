@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pycep"
+name = "ceppy"
 version = "1.0.1"
 description = ""
 authors = ["Erick Duarte <erickod@gmail.com>"]

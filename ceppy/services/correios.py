@@ -1,9 +1,9 @@
 import xml.etree.ElementTree as ET
 
-from pycep.adapters.aiohttp_client import AioHttpHttpClient, HttpResponse
-from pycep.cep_data import CepData
-from pycep.protocols.http_client import HttpClient
-from pycep.protocols.query_service import QueryService
+from ceppy.adapters.aiohttp_client import AioHttpHttpClient, HttpResponse
+from ceppy.cep_data import CepData
+from ceppy.protocols.http_client import HttpClient
+from ceppy.protocols.query_service import QueryService
 
 
 class CorreiosService:
