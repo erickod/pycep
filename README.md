@@ -12,19 +12,19 @@ Esse projeto é compatível com as versões `3.10` e `3.11` do python no momento
 
 ##### PIP
 ```
-pip install pycep
+pip install ceppy
 ```
 
 ##### Poetry
 ```
-poetry add pycep
+poetry add ceppy
 ```
 
 ### Fazendo uma consulta
 Tenha em mente que a lib vai retornar o serviço que responder mais rápido
 
 ```python
-from pycep import Cep
+from ceppy import Cep
 
 cep = Cep("75140070")
 ```
@@ -33,7 +33,7 @@ cep = Cep("75140070")
 Você pode usar os atributos listados abaixo para acessar os dados do Cep:
 
 ```python
-from pycep import Cep
+from ceppy import Cep
 
 cep = Cep("75140070")
 
@@ -49,7 +49,7 @@ print(cep.status) # query_done
 Você também pode converter os dados para dict
 
 ```python
-from pycep import Cep
+from ceppy import Cep
 
 cep = Cep("75140070")
 print(dict(cep))
