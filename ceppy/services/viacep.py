@@ -1,11 +1,11 @@
-from ceppy.adapters.aiohttp_client import AioHttpHttpClient
+from ceppy.adapters.httpx_client import HttpxHttpClient
 from ceppy.cep_data import CepData
 from ceppy.protocols.http_client import HttpClient
 from ceppy.protocols.query_service import QueryService
 
 
 class ViaCepService:
-    def __init__(self, http_client: HttpClient = AioHttpHttpClient()) -> None:
+    def __init__(self, http_client: HttpClient = HttpxHttpClient()) -> None:
         self.__base_url = "https://viacep.com.br/ws/{cep}/json/"
         self.__http_client = http_client
 

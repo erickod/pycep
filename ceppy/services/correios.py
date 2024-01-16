@@ -1,19 +1,19 @@
 import xml.etree.ElementTree as ET
 
-from ceppy.adapters.aiohttp_client import AioHttpHttpClient, HttpResponse
+from ceppy.adapters.httpx_client import HttpxHttpClient
 from ceppy.cep_data import CepData
 from ceppy.protocols.http_client import HttpClient
 from ceppy.protocols.query_service import QueryService
 
 
 class CorreiosService:
-    def __init__(self, http_client: HttpClient = AioHttpHttpClient()) -> None:
+    def __init__(self, http_client: HttpClient = HttpxHttpClient()) -> None:
         self.__endpoint = "https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente"
         self.__http_client = http_client
 
     async def query_cep(self, cep: str) -> CepData:
         self.__cep_number = cep
-        response: HttpResponse = await self.__http_client.post(
+        response = await self.__http_client.post(
             self.__endpoint, data=self.__get_request_data(cep)
         )
         et = ET.fromstring(response.text())

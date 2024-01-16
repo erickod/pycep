@@ -1,6 +1,5 @@
-from typing import Any, Protocol
-
-from ceppy.adapters.aiohttp_client import HttpResponse
+from typing import Any, Protocol, Union
+from ceppy.adapters.http_response import HttpResponse
 
 
 class HttpClient(Protocol):
@@ -8,6 +7,9 @@ class HttpClient(Protocol):
         pass
 
     async def post(
-        self, url: str, data: dict[str, Any] = {}, json: dict[str, Any] = {}
+        self,
+        url: str,
+        data: Union[dict[str, Any], bytes] = {},
+        json: dict[str, Any] = {},
     ) -> HttpResponse:
         pass
