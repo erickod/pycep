@@ -20,6 +20,7 @@ class CepData:
     city: str = ""
     state: str = ""
     cep: str = ""
+    complement: str = ""
     provider: str = ""
 
     def __getitem__(self, key: str | int) -> str:

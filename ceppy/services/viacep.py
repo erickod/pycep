@@ -18,11 +18,9 @@ class ViaCepService:
             city=response_asdict.get("localidade"),
             state=response_asdict.get("uf"),
             cep=cep,
+            complement=response_asdict.get("complemento", ""),
             provider=self.__class__.__name__,
         )
-        complemento = response_asdict.get("complemento")
-        if complemento:
-            cep_data.street += f" {complemento}"
         return cep_data
 
 

@@ -18,6 +18,7 @@ class OpenCepService:
             city=response_asdict.get("localidade"),
             state=response_asdict.get("uf"),
             cep=cep,
+            complement=response_asdict.get("complemento", ""),
             provider=self.__class__.__name__,
         )
 

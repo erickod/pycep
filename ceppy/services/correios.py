@@ -27,11 +27,9 @@ class CorreiosService:
             district=element.find("bairro").text or "",
             city=element.find("cidade").text or "",
             state=element.find("uf").text or "",
+            complement=element.find("complemento2").text or "",
             provider=self.__class__.__name__,
         )
-        complemento = element.find("complemento2").text
-        if complemento:
-            cep_data.street += f" {complemento}"
         return cep_data
 
     def __get_request_data(self, cep: str) -> bytes:
