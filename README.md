@@ -79,7 +79,3 @@ print(dict(cep))
 ## Licença
 
 O projeto está disponível através da licença MIT - Consulte o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
-
-## Menções importantes
-
-* Este projeto foi inspirado na lib `cep-promise`, criada pelo Felipe Deschamps.
