@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from ceppy.protocols.query_service import QueryService
+from pycep.protocols.query_service import QueryService
 
 
 class CEPServicesLoader(Protocol):

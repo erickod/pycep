@@ -2,7 +2,7 @@ from unittest.mock import AsyncMock
 
 import aiohttp
 
-from ceppy.adapters.aiohttp_client import AioHttpHttpClient, HttpResponse
+from pycep.adapters.aiohttp_client import AioHttpHttpClient, HttpResponse
 
 
 class FakeAioHttp:

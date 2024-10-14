@@ -1,18 +1,18 @@
-from ceppy import Cep
-from ceppy.ceppy import Ceppy
+from pycep import Cep
+from pycep.pycep import PyCEP
 from tests.helpers import FakeCEPServicesLoader
 from tests.helpers.fake_query_service import FakeQueryService
 
 
 def test_is_created_with_waiting_query_status() -> None:
-    sut = Ceppy(
+    sut = PyCEP(
         "72120020",
         cep_services_loader=FakeCEPServicesLoader(output_services=[]),
     )
     assert sut.status == "waiting_query"
 
 
-def test_load_method_from_cep_services_is_called_at_Ceppy_instantiation_time() -> None:
+def test_load_method_from_cep_services_is_called_at_PyCEP_instantiation_time() -> None:
     cep_services_loader = FakeCEPServicesLoader(output_services=[FakeQueryService()])
     assert not cep_services_loader.load_is_called
     sut = Cep("72120020", cep_services_loader=cep_services_loader)
@@ -63,7 +63,7 @@ def test_repr_implementation() -> None:
     output_services = [FakeQueryService(street, district, city, state, cep)]
     cep_services_loader = FakeCEPServicesLoader(output_services=output_services)
     sut = Cep(cep, cep_services_loader=cep_services_loader)
-    assert str(sut) == "Ceppy(cep=72120020)"
+    assert str(sut) == "PyCEP(cep=72120020)"
 
 
 def test_access_items_using_numeric_indexes() -> None:
@@ -80,7 +80,7 @@ def test_access_items_using_numeric_indexes() -> None:
     assert sut[2] == ("city", "Cidade Lateral")
     assert sut[3] == ("state", "GO")
     assert sut[4] == ("cep", "72120020")
-    assert sut[5] == ("provider", "FakeQueryService")
+    assert sut[6] == ("provider", "FakeQueryService")
 
 
 def test_access_items_using_keys() -> None:

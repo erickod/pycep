@@ -1,6 +1,6 @@
 from typing import Protocol, runtime_checkable
 
-from ceppy.cep_data import CepData
+from pycep.cep_data import CepData
 
 
 @runtime_checkable

@@ -1,5 +1,5 @@
-from ceppy.cep_data import CepData
-from ceppy.protocols.query_service import QueryService
+from pycep.cep_data import CepData
+from pycep.protocols.query_service import QueryService
 
 
 class FakeQueryService:

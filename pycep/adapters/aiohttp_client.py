@@ -2,7 +2,7 @@ import contextlib
 from typing import Any
 
 import aiohttp
-from ceppy.adapters.http_response import HttpResponse
+from pycep.adapters.http_response import HttpResponse
 
 
 class AioHttpHttpClient:

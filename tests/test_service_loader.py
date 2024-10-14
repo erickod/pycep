@@ -3,7 +3,7 @@ from unittest.mock import Mock
 import pytest
 
 import tests
-from ceppy.cep_service_loader import CepQueryServiceLoader
+from pycep.cep_service_loader import CepQueryServiceLoader
 from tests.helpers.fake_query_service import FakeQueryService
 
 

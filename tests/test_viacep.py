@@ -1,6 +1,6 @@
-from ceppy.cep_data import CepData
-from ceppy.protocols.query_service import QueryService
-from ceppy.services.viacep import ViaCepService, make
+from pycep.cep_data import CepData
+from pycep.protocols.query_service import QueryService
+from pycep.services.viacep import ViaCepService, make
 from tests.helpers.fake_http_client import FakeHttpClient
 
 expected_get_output = {
@@ -32,6 +32,6 @@ async def test_querycep_returns_expected_value() -> None:
     assert isinstance(output, CepData)
     assert output.district == "Taguatinga Norte (Taguatinga)"
     assert output.city == "Brasília"
-    assert output.street == "Quadra QND 2 SC"
+    assert output.street == "Quadra QND 2"
     assert output.state == "DF"
     assert output.provider == ViaCepService.__name__

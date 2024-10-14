@@ -1,5 +1,5 @@
 from typing import Any, Protocol, Union
-from ceppy.adapters.http_response import HttpResponse
+from pycep.adapters.http_response import HttpResponse
 
 
 class HttpClient(Protocol):

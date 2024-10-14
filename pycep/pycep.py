@@ -2,19 +2,19 @@ import asyncio
 import re
 from typing import Any
 
-from ceppy import services
-from ceppy.cep_data import CepData
-from ceppy.cep_service_loader import CepQueryServiceLoader
-from ceppy.protocols.service_loader import CEPServicesLoader
+from pycep import services
+from pycep.cep_data import CepData
+from pycep.cep_service_loader import CepQueryServiceLoader
+from pycep.protocols.service_loader import CEPServicesLoader
 
 
-class Ceppy:
+class PyCEP:
     def __init__(
         self, cep: str, *, cep_services_loader: CEPServicesLoader, async_runner=asyncio
     ) -> None:
         self.__services = cep_services_loader.load()
         self.__async_runner = async_runner
-        self.__tasks: list[asyncio.Task] = []
+        self.__tasks: list[asyncio.Task[Any]] = []
         self.__cep_data: CepData = CepData()
         self.__status: str = "waiting_query"
         self.__services and asyncio.run(self.__query_services(cep))
@@ -76,7 +76,7 @@ class Ceppy:
         return self.__cep_data.provider
 
     def __repr__(self) -> str:
-        return f"Ceppy(cep={self.__cep_data.cep})"
+        return f"PyCEP(cep={self.__cep_data.cep})"
 
 
 class CepFactory:
@@ -85,8 +85,8 @@ class CepFactory:
         cep: str,
         *,
         cep_services_loader: CEPServicesLoader | None = None,
-    ) -> Ceppy:
-        return Ceppy(
+    ) -> PyCEP:
+        return PyCEP(
             cep=cep,
             cep_services_loader=cep_services_loader
             or CepQueryServiceLoader(module=services),
