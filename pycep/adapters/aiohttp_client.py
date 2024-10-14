@@ -29,5 +29,5 @@ class AioHttpHttpClient:
 
     async def __return_response(self, response_data: Any) -> HttpResponse:
         with contextlib.suppress(aiohttp.client_exceptions.ContentTypeError):
-            return HttpResponse(await response_data.json(), await response_data.text())
-        return HttpResponse(text_data=await response_data.text())
+            return HttpResponse(response_data.status, await response_data.json(), await response_data.text())
+        return HttpResponse(text_data=await response_data.text(), status=response_data.status)

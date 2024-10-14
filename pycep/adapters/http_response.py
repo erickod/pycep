@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class HttpResponse:
+    status: int
     json_data: dict[str, Any] = field(default_factory=dict)
     text_data: str = ""
 

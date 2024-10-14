@@ -32,5 +32,5 @@ class HttpxHttpClient:
 
     async def __return_response(self, response_data: Any) -> HttpResponse:
         with contextlib.suppress(json.decoder.JSONDecodeError):
-            return HttpResponse(response_data.json(), response_data.text)
-        return HttpResponse(text_data=response_data.text)
+            return HttpResponse(response_data.status_code, response_data.json(), response_data.text)
+        return HttpResponse(text_data=response_data.text, status=response_data.status_code)
