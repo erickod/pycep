@@ -8,7 +8,7 @@ Nesta seção você encontrará instruções de como instalar o pacote e também
 
 ### Requerimentos
 
-Esse projeto é compatível com as versões `3.10` e `3.11` do python no momento. A compatibilização com versões anteriores está prevista, e qualquer contribuição é bem vinda.
+Esse projeto é compatível com as versões `3.10`, `3.11` e `3.12` do python no momento. A compatibilização com versões anteriores está prevista, e qualquer contribuição é bem vinda.
 
 ### Instalação
 
