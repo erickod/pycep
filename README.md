@@ -73,7 +73,8 @@ print(dict(cep))
 
 ## Este projeto utiliza
 
-- [AioHTTP](https://docs.aiohttp.org/en/stable/) - Requisições HTTP
+- [HttpX](https://www.python-httpx.org/) - Adapter padrão para requisições HTTP
+- [AioHTTP](https://docs.aiohttp.org/en/stable/) - Adapter alternativo para requisições HTTP
 - [Poetry](https://python-poetry.org/) - Gerenciamento de dependências e publicação
 - [Pytest](https://docs.pytest.org/) - Testes automatizados
 
