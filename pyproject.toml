@@ -1,15 +1,16 @@
 [tool.poetry]
 name = "pycep"
 version = "1.0.2"
-description = ""
+description = "Consulta CEPs em vários serviços (Correios, ViaCep, OpenCep) de maneira totalmente assíncrona"
 authors = ["Erick Duarte <erickod@gmail.com>"]
 readme = "README.md"
+homepage = "https://github.com/erickod/pycep"
+repository = "https://github.com/erickod/pycep"
 
 [tool.poetry.dependencies]
 python = ">= 3.10, <= 3.13"
 httpx = "0.24.1"
 aiohttp = "^3.10.10"
-
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.5.1"
@@ -22,7 +23,6 @@ pytest-asyncio = "^0.21.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
