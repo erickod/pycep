@@ -1,4 +1,7 @@
-from typing import Any, Dict, Protocol, Union
+from typing import Any, Dict, Union
+
+from typing_extensions import Protocol
+
 from pycep.adapters.http_response import HttpResponse
 
 

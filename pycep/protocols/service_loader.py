@@ -1,4 +1,6 @@
-from typing import List, Protocol
+from typing import List
+
+from typing_extensions import Protocol
 
 from pycep.protocols.query_service import QueryService
 
