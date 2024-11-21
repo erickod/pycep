@@ -1,4 +1,4 @@
-from typing import Any, Protocol, Union
+from typing import Any, Dict, Protocol, Union
 from pycep.adapters.http_response import HttpResponse
 
 
@@ -9,7 +9,7 @@ class HttpClient(Protocol):
     async def post(
         self,
         url: str,
-        data: Union[dict[str, Any], bytes] = {},
-        json: dict[str, Any] = {},
+        data: Union[Dict[str, Any], bytes] = {},
+        json: Dict[str, Any] = {},
     ) -> HttpResponse:
         pass

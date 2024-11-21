@@ -1,6 +1,6 @@
 import asyncio
 import re
-from typing import Any
+from typing import Any, Tuple, Union
 
 from pycep import services
 from pycep.cep_data import CepData
@@ -42,7 +42,7 @@ class PyCEP:
     def __configure_cep_data(self, task: asyncio.Task) -> None:
         self.__cep_data = task.result()
 
-    def __getitem__(self, key: str | int) -> str | tuple[str, str]:
+    def __getitem__(self, key: Union[str, int]) -> Union[str, Tuple[str, str]]:
         if isinstance(key, int):
             return list(vars(self.__cep_data).items())[key]
         return self.__cep_data[key]
@@ -84,7 +84,7 @@ class CepFactory:
         self,
         cep: str,
         *,
-        cep_services_loader: CEPServicesLoader | None = None,
+        cep_services_loader: Union[CEPServicesLoader, None] = None,
     ) -> PyCEP:
         return PyCEP(
             cep=cep,

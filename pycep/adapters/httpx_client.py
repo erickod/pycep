@@ -1,6 +1,6 @@
 import contextlib
 import json
-from typing import Any, Union
+from typing import Any, Dict, Union
 import httpx
 from .http_response import HttpResponse
 
@@ -17,8 +17,8 @@ class HttpxHttpClient:
     async def post(
         self,
         url: str,
-        data: Union[dict[str, Any], bytes] = {},
-        json: dict[str, Any] = {},
+        data: Union[Dict[str, Any], bytes] = {},
+        json: Dict[str, Any] = {},
     ) -> HttpResponse:
         async with self.__client.AsyncClient() as client:
             if json:

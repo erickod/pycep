@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Union
 
 keys_mapping = {
     "street": "street",
@@ -23,7 +24,7 @@ class CepData:
     complement: str = ""
     provider: str = ""
 
-    def __getitem__(self, key: str | int) -> str:
+    def __getitem__(self, key: Union[str, int]) -> str:
         return getattr(self, keys_mapping[key])
 
     def __bool__(self) -> bool:
