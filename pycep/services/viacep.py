@@ -11,6 +11,8 @@ class ViaCepService:
 
     async def query_cep(self, cep: str) -> CepData:
         response = await self.__http_client.get(self.__base_url.format(cep=cep))
+        if response.status != 200:
+            return CepData(provider=self.__class__.__name__)
         response_asdict = response.json()
         cep_data = CepData(
             street=response_asdict.get("logradouro"),

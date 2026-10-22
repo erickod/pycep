@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pycep"
 version = "1.0.2"
-description = "Consulta CEPs em vários serviços (Correios, ViaCep, OpenCep) de maneira totalmente assíncrona"
+description = "Consulta CEPs em vários serviços (ViaCep, OpenCep, BrasilAPI, ApiCep) de maneira totalmente assíncrona"
 authors = ["Erick Duarte <erickod@gmail.com>"]
 readme = "README.md"
 homepage = "https://github.com/erickod/pycep"
@@ -9,7 +9,7 @@ repository = "https://github.com/erickod/pycep"
 
 [tool.poetry.dependencies]
 python = ">= 3.10, < 3.15"
-httpx = "0.24.1"
+httpx = ">=0.24.1"
 aiohttp = "^3.10.10"
 
 [tool.poetry.group.dev.dependencies]
